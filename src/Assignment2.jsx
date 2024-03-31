@@ -29,7 +29,7 @@ export const Assignment2 = () => {
 
   return (
     <div>
-      <nav className=" border-[1px] border-red-500 sticky top-0 z-30 bg-white w-[100%] p-5 ">
+      <nav className=" border-[1px] shadow-2xl sticky top-0 z-30 bg-white w-[100%] p-5 ">
         <div className="flex items-center justify-center gap-4">
           <input
             onChange={handleChange}
@@ -39,6 +39,9 @@ export const Assignment2 = () => {
             value={search}
           />
           <p className="text-black p-4 rounded-[10px] border-[1px]">Liked: {favourite.length}</p>
+          <button onClick={changeView} className="text-black p-4 rounded-[10px] border-[1px] bg-[#e8be8e] hover:text-white hover:bg-black cursor">Toggle View
+          </button>
+          {console.log(toggle)}
         </div>
 
         <div className=" flex gap-5 ml-5 w-[100%] flex-wrap pt-2">
@@ -78,13 +81,13 @@ export const Assignment2 = () => {
           .map((item, id) => (
             <div
               key={id}
-              className=" flex flex-col h-[380px] w-[280px] ml-11 border-[1px] mt-11 items-center justify-center border-[#e8be8e] rounded-[30px]"
+              className={`${toggle ? "flex flex-col h-[380px] w-[280px] ":"flex h-[200px] gap-3 w-[380px]"} justify-center   ml-11 border-[1px] mt-11 items-center  border-[#e8be8e] rounded-[30px]`}
             >
               <img
-                className="h-[250px] w-[250px] rounded-[30px]"
+                className={`${toggle ? "h-[250px] w-[250px] rounded-[30px]": "h-[150px] w-[150px] rounded-full"}`}
                 src={item.avatar_url}
               />
-              <div>
+              <div className={`${toggle ? "flex flex-col":" flex flex-col-reverse"}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -94,7 +97,7 @@ export const Assignment2 = () => {
                   onClick={() => liked(item.id)}
                   className={`w-6 h-6 absolute ${
                     item.checked ? "fill-red-500" : "fill- none"
-                  } -mt-[230px] cursor-pointer ml-[10px]`}
+                  }  cursor-pointer ${toggle ? " ml-[10px] -mt-[230px] " : " mb-[50px] ml-[120px]   text-black" }`}
                 >
                   <path
                     strokeLinecap="round"
@@ -104,7 +107,7 @@ export const Assignment2 = () => {
                 </svg>
                 <p className="mt-4 text-black ">Username: {item.login}</p>
                 <a
-                  className="btn mt-2 w-[250px] bg-[#e8be8e] text-black hover:text-white border-0"
+                  className={`btn mt-2  bg-[#e8be8e] text-black hover:text-white border-0 ${toggle ? "w-[250px]":"w-[100px]" }`}
                   href={item.html_url}
                   rel="noreferrer"
                   target="_blank"
