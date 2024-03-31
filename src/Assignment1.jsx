@@ -4,8 +4,8 @@ export const Assignment1 = () => {
   const [input, setInput] = useState(""); // useState for setting the display of what is written in the input
   const [display, setDisplay] = useState(true); // UseState for hiding the display
   const [todo, setTodo] = useState([]); //useState for setting up my todo array
-  const [currentColor, setCurrentColor] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(false);
+  const [currentColor, setCurrentColor] = useState(null); // usestate to set the the selected color optin to display
+  const [selectedColor, setSelectedColor] = useState(false);//useState to change the color of the todo tiles
   const [search, setSearch] = useState("");
 
   const hideText = () => {
@@ -63,7 +63,7 @@ export const Assignment1 = () => {
 
   return (
     <div className="h-screen flex gap-16  items-center justify-center">
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center"> 
         <select
           onChange={colorChange}
           id="color"
