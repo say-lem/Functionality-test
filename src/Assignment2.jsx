@@ -3,9 +3,9 @@ import { gbUsers } from "./learnApi";
 
 export const Assignment2 = () => {
   const [gUser, setGUser] = useState(gbUsers); //useState handling the info array being mapped
-  const [favourite, setFaourite] = useState([]); //UseState handling the like and unlike toggle
+  const [favourite, setFaourite] = useState([]); //UseState handling the like and unlike count and display
   const [search, setSearch] = useState(""); //useState that handles the search and how it filters it
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(true);// usestate that handles the toggle
 
   const handleChange = (e) => {
     //fuction that handles the dynamic update of input in the search bar
@@ -23,7 +23,7 @@ export const Assignment2 = () => {
     let myNum = newFavourite.filter((item) => item.checked); //this is where i created the array for just favourite items
     setFaourite(myNum); //display this number of items in the favourite array
   };
-  const changeView = () => {
+  const changeView = () => {//function to toggle view
     setToggle(!toggle);
   };
 

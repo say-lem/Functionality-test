@@ -62,7 +62,7 @@ export const Assignment1 = () => {
   };
 
   return (
-    <div className="h-screen flex gap-16  items-center justify-center">
+    <div className="h-screen flex gap-16  items-center justify-center max-[1200px]:flex-col max-[1200]:flex">
       <div className="flex flex-col items-center justify-center"> 
         <select
           onChange={colorChange}
