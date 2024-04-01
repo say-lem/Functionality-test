@@ -174,7 +174,7 @@ export const Assignment1 = () => {
           .map((item) => {
             return (
               <div
-                className={`flex gap-2 items-center justify-between ${`${currentColor}`}  mt-5 p-1 border-[1px] border-black`}
+                className={`flex gap-2 items-center justify-between ${`${currentColor}`}  m-2 p-1 border-[1px] border-black`}
                 key={item?.id}
               >
                 <div className="text-black h-[100%] flex items-center  gap-4 w-[300px]">
