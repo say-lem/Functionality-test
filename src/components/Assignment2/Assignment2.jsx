@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { gbUsers } from "./learnApi";
+import { gbUsers } from "../../learnApi";
 
 export const Assignment2 = () => {
   const [gUser, setGUser] = useState(gbUsers); //useState handling the info array being mapped
