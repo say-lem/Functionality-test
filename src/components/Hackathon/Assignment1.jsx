@@ -41,7 +41,7 @@ export const Assignment1 = () => {
   };
   const removeTodo = (id) => {
     //function to remove items from the todo array
-    let deleteTodos = users.filter((item) => item.id !== id);
+    let deleteTodos = users.splice(id,1);
     setTodo(deleteTodos);
   };
 
