@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FirstSegment } from "./FirstSegment";
 import { SecondSegment } from "./SecondSegment";
 import { ThirdSegment } from "./ThirdSegment";
+import { NavBar } from "./NavBar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import axios from "axios";
+
 
 export const Assignment1 = () => {
   const [input, setInput] = useState(""); // useState for setting the display of what is written in the input
@@ -10,6 +14,7 @@ export const Assignment1 = () => {
   const [currentColor, setCurrentColor] = useState(null); // usestate to set the the selected color optin to display
   const [selectedColor, setSelectedColor] = useState(false); //useState to change the color of the todo tiles
   const [search, setSearch] = useState("");
+  const [users, setUsers] = useState([]);
 
   const hideText = () => {
     // onclick function that handles the hide and unhide
@@ -36,7 +41,7 @@ export const Assignment1 = () => {
   };
   const removeTodo = (id) => {
     //function to remove items from the todo array
-    let deleteTodos = todo.filter((item) => item.id !== id);
+    let deleteTodos = users.filter((item) => item.id !== id);
     setTodo(deleteTodos);
   };
 
@@ -62,14 +67,43 @@ export const Assignment1 = () => {
     console.log(id);
   };
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const getUsers = () => {
+   
+
+    axios
+      .get(
+        "http://49.13.2.10:4000/todos"
+      )
+      .then((response) => {
+        // console.log(response);
+        // console.log(response.data.data);
+        // console.log(response.data.data);
+        setUsers(response.data.data);
+      });
+      // console.log(users.description)
+
+  };
+
+ 
+
   return (
+    
+    <div>
+
+      <NavBar/>
     <div className=" p-20 lg:h-screen lg:flex-row lg:gap-16  flex sm:flex-col items-center justify-center ">
       <FirstSegment
         colorChange={colorChange}
         search={search}
         selectedColor={selectedColor}
         handleChange2={handleChange2}
+        users={users}
       />
+       <ThirdSegment todo={todo} users={users} search={search} currentColor={currentColor} removeTodo={removeTodo} />
       <SecondSegment
         handleChange={handleChange}
         input={input}
@@ -77,7 +111,8 @@ export const Assignment1 = () => {
         hideText={hideText}
         display={display}
       />
-      <ThirdSegment todo={todo} search={search} currentColor={currentColor} />
+     
+    </div>
     </div>
   );
 };

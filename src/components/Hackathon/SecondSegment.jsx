@@ -9,7 +9,7 @@ export const SecondSegment = ({
     <div className="flex flex-col h-[300px] w-[500px] items-center justify-between bg-[#c7ac8d] p-12 rounded-[30px]">
       <div className="flex gap-4">
         <input
-          placeholder="Input your text"
+          placeholder="Input your todo"
           className="border-0 outline-none bg-transparent flex text-center text-[black] shadow-2xl w-[200px]"
           onChange={handleChange}
           type="text"
@@ -36,12 +36,19 @@ export const SecondSegment = ({
           Add Todo
         </button>
       </div>
+      <div className="flex gap-3">
       <p className={`text-black ${display ? `block` : "text-transparent"}`}>
-        Text Input: {input}
+       Input Name
       </p>
-      <p className={`text-black ${display ? `block` : "text-transparent"}`}>
-        Text count: {input.length}
-      </p>
+      <input
+          placeholder="Input your Name"
+          className="border-0 outline-none bg-transparent flex text-center text-[black] shadow-2xl w-[200px]"
+          onChange={handleChange}
+          type="text"
+          value={input}
+        />
+      </div>
+      
       <button
         onClick={hideText}
         className=" cursor-auto text-black bg-[#e8be8e] shadow-xl w-[125px] gap-2 justify-center items-center flex h-9  rounded-[5px]"

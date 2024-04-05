@@ -1,11 +1,11 @@
-export const ThirdSegment = ({ todo, search, currentColor }) => {
+export const ThirdSegment = ({ todo, search, currentColor, users, removeTodo }) => {
   return (
     <div className="w-[400px]">
-      {todo
+      {users
         .filter((item) => {
           return search.toLowerCase() === ""
             ? item
-            : item.data.toLowerCase().includes(search);
+            : item.name.toLowerCase().includes(search);
         })
         .map((item) => {
           return (
@@ -33,7 +33,7 @@ export const ThirdSegment = ({ todo, search, currentColor }) => {
                     />
                   </svg>
                 </p>
-                {item?.data}
+                {item?.description}
               </div>
 
               <button
