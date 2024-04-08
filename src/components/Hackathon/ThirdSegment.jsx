@@ -1,4 +1,4 @@
-export const ThirdSegment = ({ todo, search, currentColor, users, removeTodo }) => {
+export const ThirdSegment = ({ todo, search, currentColor, users, removeTodo, tick, completed, }) => {
   return (
     <div className="w-[400px]">
       {users
@@ -22,9 +22,9 @@ export const ThirdSegment = ({ todo, search, currentColor, users, removeTodo }) 
                     strokeWidth={1.5}
                     stroke="currentColor"
                     className={`w-6 h-6 cursor-pointer ${
-                      item.checked ? "text-black" : "text-transparent"
+                      item.completed ? "text-black" : "text-transparent"
                     }`}
-                    onClick={() => tick(item.id)}
+                    onClick={() => tick(item.id, item)}
                   >
                     <path
                       strokeLinecap="round"
@@ -37,7 +37,7 @@ export const ThirdSegment = ({ todo, search, currentColor, users, removeTodo }) 
               </div>
 
               <button
-                onClick={() => removeTodo(item?.id)}
+                onClick={() => removeTodo(item.id)}
                 className=" text-black bg-[#e8be8e] shadow-xl w-[100px] justify-center gap-3 items-center flex h-9  rounded-[5px]"
               >
                 <svg
