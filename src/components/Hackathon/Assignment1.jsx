@@ -42,7 +42,9 @@ export const Assignment1 = () => {
     //function to add the content of my input into my todo array
     const newId = users.length > 0 ? users[users.length - 1]?.id + 1 : 1;
     e.preventDefault();
-    axios.post("http://49.13.2.10:4000/todos", post);
+    axios.post("http://49.13.2.10:4000/todos", post).then(()=>{
+      setCompleted(prev => !prev)
+    }).catch();
     return console.log(post);
     // console.log("abeg");
   };
